@@ -35,11 +35,11 @@ NGROK_AUTHTOKEN=<token> mvn compile exec:java
    import com.ngrok.Session;
    import java.net.URL;
 
-   Forwarder.Endpoint forwardToApp() throws Exception {
-       var session = Session.withAuthtokenFromEnv().connect();
-       var forwarder = session.httpEndpoint().forward(new URL("http://localhost:8080"));
-       System.out.println("Ingress established at: " + forwarder.getUrl());
-       return forwarder;
+   void forwardToApp() throws Exception {
+       try (var session = Session.withAuthtokenFromEnv().connect()) {
+           var forwarder = session.httpEndpoint().forward(new URL("http://localhost:8080"));
+           System.out.println("Ingress established at: " + forwarder.getUrl());
+       }
    }
    ```
 
