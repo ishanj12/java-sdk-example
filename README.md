@@ -29,7 +29,13 @@ NGROK_AUTHTOKEN=<token> mvn compile exec:java
    </dependency>
    ```
 
-2. Add the following to your app:
+2. Set your authtoken:
+
+   ```sh
+   export NGROK_AUTHTOKEN=<token>
+   ```
+
+3. Add the following to your app:
 
    ```java
    import com.ngrok.Session;
